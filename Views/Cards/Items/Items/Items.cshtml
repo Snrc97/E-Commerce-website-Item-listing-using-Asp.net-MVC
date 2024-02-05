@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Ürünler";
+}
+
+<div class="container pt-4"> 
+    <div class="row">
+        <div class="col-xxl">
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-center">
+                        <h1 class="text-dark">Items</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col d-flex justify-content-end">
+                            <button class="btn btn-image"><i class="bi bi-cart"></i>Sepet</button>
+                        </div>
+                    </div>
+                    <div class="row row-cols-5 g-5 pt-3">
+                        @for (var i = 1; i < 10; i++)
+                        {
+                            string imagePath = Url.Content("~/images/items/item"+i+".png");
+                            string urlPath = Url.Content("~/Items/Details/"+i);
+                            <div class="col">
+                                <a href="@urlPath" id="title" title="elektronik" class="item-card">
+                                    <div class="card">
+                                        <div style="height:250px; width:auto;" class="d-flex align-items-center justify-content-center">
+                                            <img class="card-img-top" src="@imagePath" alt="electronic">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Ürün @i</h5>
+                                            <p class="card-text">Ürün Açıklaması</p>
+                                            <span id="price">@(i*100)₺</span>
+                                            <div id="rating">
+                                                <span class="fa fa-star starchecked"></span>
+                                                <span class="fa fa-star starchecked"></span>
+                                                <span class="fa fa-star starchecked"></span>
+                                                <span class="fa fa-star starchecked"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted">Last updated @(i*5) mins ago</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                        <script>
+                            export default {
+                                data() {
+                                    return {
+                                        value: 3
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script async defer charset="ISO-8859-9" src="~/js/Cards/Items/Items/Items.js"></script>
+}
+
+
+
+
